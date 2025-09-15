@@ -5,10 +5,13 @@ import time
 import os
 
 pygame.init()
+pygame.mixer.init()
+sot=pygame.mixer.Sound()
+pygame.mixer.music.load("background.mp3") #chay nhac background
+pygame.mixer.music.play(-1)
 WIDTH, HEIGHT = 800, 600
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Typing Speed")
-
 FONT = pygame.font.SysFont("consolas", 32)
 BIG_FONT = pygame.font.SysFont("consolas", 48, bold=True)
 
@@ -196,8 +199,6 @@ def main():
             
             WIN.fill((30, 30, 30))
             clock.tick(60)
-            pygame.mixer.music.load("D:\code\game\background.ogg")
-            pygame.mixer.music.play(-1)
             if mode == 1:
                 speed = get_survival_speed(score)
 
@@ -214,6 +215,8 @@ def main():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    sound.play()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         run = False
@@ -257,3 +260,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
