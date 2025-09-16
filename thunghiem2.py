@@ -7,11 +7,11 @@ import os
 pygame.init()
 pygame.mixer.init()
 
-# Nhạc nền (loop vô hạn)
+# Nhạc nền
 pygame.mixer.music.load("background.mp3")
 pygame.mixer.music.play(-1)
-
-key_sound = pygame.mixer.Sound("keypress.wav")
+#âm thanh typing
+key_sound = pygame.mixer.Sound("computer-mouse-click-351398.mp3")
 
 # Kích thước màn hình
 WIDTH, HEIGHT = 800, 600
@@ -259,4 +259,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
