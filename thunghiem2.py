@@ -6,15 +6,22 @@ import os
 
 pygame.init()
 pygame.mixer.init()
-sot=pygame.mixer.Sound()
-pygame.mixer.music.load("background.mp3") #chay nhac background
+
+# Nhạc nền (loop vô hạn)
+pygame.mixer.music.load("background.mp3")
 pygame.mixer.music.play(-1)
+
+# Âm thanh khi gõ phím (bạn cần file .wav, ví dụ: keypress.wav)
+key_sound = pygame.mixer.Sound("keypress.wav")
+
+# Kích thước màn hình
 WIDTH, HEIGHT = 800, 600
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Typing Speed")
 FONT = pygame.font.SysFont("consolas", 32)
 BIG_FONT = pygame.font.SysFont("consolas", 48, bold=True)
 
+# Import danh sách từ vựng
 from english3000 import WORDS
 
 clock = pygame.time.Clock()
@@ -184,19 +191,13 @@ def main():
 
         mode = show_mode_menu()
 
-        # Chạy nhạc nền ngay khi vào game
-        pygame.mixer.music.load("background.mp3")   
-        pygame.mixer.music.play(-1)  # loop vô hạn
-
         if mode == 2:
             speed = 6
             start_time = time.time()
         else:
             speed = 2
 
-
         while run:
-            
             WIN.fill((30, 30, 30))
             clock.tick(60)
             if mode == 1:
@@ -216,8 +217,7 @@ def main():
                     pygame.quit()
                     sys.exit()
                 if event.type == pygame.KEYDOWN:
-                    sound.play()
-                if event.type == pygame.KEYDOWN:
+                    key_sound.play()
                     if event.key == pygame.K_ESCAPE:
                         run = False
                     else:
@@ -260,4 +260,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
