@@ -11,7 +11,6 @@ pygame.mixer.init()
 pygame.mixer.music.load("background.mp3")
 pygame.mixer.music.play(-1)
 
-# Âm thanh khi gõ phím (bạn cần file .wav, ví dụ: keypress.wav)
 key_sound = pygame.mixer.Sound("keypress.wav")
 
 # Kích thước màn hình
@@ -260,3 +259,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
