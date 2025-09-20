@@ -1,11 +1,10 @@
-words = [
-    "a",
-    "abandon",
-    "ability",
-    "able",
-    "about",
-    "above",
-    "abroad",
+WORDS = [
+    "ABANDON",
+    "ABILITY",
+    "ABLE",
+    "ABOUT",
+    "ABOVE",
+    "ABROAD",
     "absence",
     "absolute",
     "accept",
