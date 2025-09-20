@@ -101,13 +101,13 @@ def show_mode_menu():
 
 def get_survival_speed(score):
     if score < 15:
-        return 10
+        return 3
     elif score < 30:
-        return 12
+        return 6
     elif score < 50:
-        return 14
+        return 18
     else:
-        return 16
+        return 36
 
 def get_nickname():
     nickname = ""
@@ -259,5 +259,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
