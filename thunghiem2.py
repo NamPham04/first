@@ -14,7 +14,7 @@ pygame.mixer.music.play(-1)
 key_sound = pygame.mixer.Sound("computer-mouse-click-351398.mp3")
 
 # Kích thước màn hình
-WIDTH, HEIGHT = 800, 600
+WIDTH, HEIGHT = 1024, 768
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Typing Speed")
 FONT = pygame.font.SysFont("consolas", 32)
