@@ -72,6 +72,32 @@ class FallingWord:
     def is_done(self):
         return len(self.word) == 0
 
+def show_instructions():
+    showing = True
+    while showing:
+        WIN.fill((30, 30, 30))
+        title = BIG_FONT.render("HƯỚNG DẪN", True, (0, 255, 255))
+        WIN.blit(title, (WIDTH // 2 - title.get_width() // 2, 80))
+        lines = [
+            "Gõ ký tự đầu tiên của từ đang rơi để xóa dần từ.",
+            "Khi xóa hết từ, bạn sẽ được cộng điểm.",
+            "Nếu từ rơi xuống đáy, bạn bị trừ 1 mạng.",
+            "Chế độ Survival: tốc độ tăng dần theo điểm.",
+            "Chế độ 60 Seconds: chơi trong 60 giây với tốc độ cao.",
+            "Nhấn ESC để thoát về menu."
+        ]
+        for i, line in enumerate(lines):
+            txt = FONT.render(line, True, (255, 255, 0))
+            WIN.blit(txt, (WIDTH // 2 - txt.get_width() // 2, 180 + i * 40))
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    showing = False
+
 def show_mode_menu():
     choosing = True
     mode = 1
@@ -81,9 +107,11 @@ def show_mode_menu():
         WIN.blit(title, (WIDTH // 2 - title.get_width() // 2, 120))
         m1 = FONT.render("1 - Survival: Tốc độ tăng dần", True, (255, 255, 0))
         m2 = FONT.render("2 - 60 Seconds: Tốc độ cao nhất", True, (255, 255, 0))
+        m3 = FONT.render("3 - Hướng dẫn", True, (0, 255, 0))
         WIN.blit(m1, (WIDTH // 2 - m1.get_width() // 2, 220))
         WIN.blit(m2, (WIDTH // 2 - m2.get_width() // 2, 270))
-        note = FONT.render("Nhấn 1 hoặc 2 để chọn chế độ", True, (200, 200, 200))
+        WIN.blit(m3, (WIDTH // 2 - m3.get_width() // 2, 320))
+        note = FONT.render("Nhấn 1, 2 hoặc 3 để chọn", True, (200, 200, 200))
         WIN.blit(note, (WIDTH // 2 - note.get_width() // 2, 400))
         pygame.display.update()
         for event in pygame.event.get():
@@ -97,17 +125,19 @@ def show_mode_menu():
                 elif event.key == pygame.K_2:
                     mode = 2
                     choosing = False
+                elif event.key == pygame.K_3:
+                    show_instructions()
     return mode
 
 def get_survival_speed(score):
     if score < 15:
-        return 3
+        return 2
     elif score < 30:
-        return 6
+        return 4
     elif score < 50:
-        return 18
+        return 8
     else:
-        return 36
+        return 16
 
 def get_nickname():
     nickname = ""
